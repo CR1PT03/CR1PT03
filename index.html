@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CR1PT03</title>
+    <link rel="stylesheet" href="CR1PT03.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align from the top */
+            flex-direction: column;
+        }
+
+        /* Navigation bar */
+        nav {
+            background: #000;
+            height: 60px; /* Set a fixed height for the navbar */
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0 auto;
+            padding: 0;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        nav ul ul {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+        }
+
+        nav ul li {
+            position: relative;
+            float: left;
+            width: 100%;
+            text-align: center;
+        }
+
+        nav ul li:hover ul {
+            display: block;
+        }
+
+        nav ul li a {
+            display: block;
+            text-decoration: none;
+            color: #ffffff;
+            padding: 15px 0;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+            position: relative;
+            border: 4px solid transparent;
+        }
+
+        nav ul li a:hover {
+            background-color: #000;
+            border-color: #ffffff;
+        }
+
+        nav ul ul li {
+            width: 100%;
+            text-align: center;
+        }
+
+        nav ul ul li a {
+            border: none;
+            font-size: 1rem;
+        }
+
+        /* Center content below the navbar */
+.content-container {
+    display: flex;
+    flex-direction: column; /* Stack the content vertically (image first, prices below) */
+    justify-content: center;
+    align-items: center; /* Center image and prices */
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    z-index: 0;
+    margin-top: 100px; /* Space below the navbar */
+}
+
+/* Styling for the image */
+.content-container img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px; /* Space between image and prices */
+}
+
+/* Styling for each cryptocurrency price */
+.crypto-price {
+    font-size: 1.2em;
+    margin: 20px 0;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+}
+
+/* Styling for the price value */
+.crypto-price span {
+    font-weight: bold;
+    color: #fff;
+}
+
+
+    </style>
+  </head>
+  <body>
+
+    <div id="btc-price" class="crypto-price">Loading BTC...</div>
+    <div id="eth-price" class="crypto-price">Loading ETH...</div>
+    <div id="ltc-price" class="crypto-price">Loading LTC...</div>
+    <div id="xrp-price" class="crypto-price">Loading XRP...</div>
+
+    <script>
+        // Function to fetch cryptocurrency prices from CoinGecko API in EUR
+        async function fetchCryptoPrices() {
+            const url = 'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,litecoin,ripple&vs_currencies=eur';
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Update the prices on the page
+                document.getElementById('btc-price').innerHTML = `BTC  > €<span>${data.bitcoin.eur}</span>`;
+                document.getElementById('eth-price').innerHTML = `ETH  > €<span>${data.ethereum.eur}</span>`;
+                document.getElementById('ltc-price').innerHTML = `LTC  > €<span>${data.litecoin.eur}</span>`;
+                document.getElementById('xrp-price').innerHTML = `XRP  > €<span>${data.ripple.eur}</span>`;
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                // If there's an error, show an error message
+                document.getElementById('btc-price').innerHTML = 'Error fetching BTC price';
+                document.getElementById('btc-price').classList.add('error');
+                document.getElementById('eth-price').innerHTML = 'Error fetching ETH price';
+                document.getElementById('eth-price').classList.add('error');
+                document.getElementById('ltc-price').innerHTML = 'Error fetching LTC price';
+                document.getElementById('ltc-price').classList.add('error');
+                document.getElementById('xrp-price').innerHTML = 'Error fetching XRP price';
+                document.getElementById('xrp-price').classList.add('error');
+            }
+        }
+
+        // Fetch prices when the page loads
+        fetchCryptoPrices();
+
+        // Refresh the prices every 30 seconds
+        setInterval(fetchCryptoPrices, 30000);
+    </script>
+
+    <nav>
+      <ul>
+        <li><a href="https://t.me/gh0st177">TELEGRAM</a></li>
+        <li><a href="https://api.whatsapp.com/send/?phone=%2B393508079117&text&type=phone_number&app_absent=0">WHATSAPP</a></li>
+      </ul>
+    </nav>
+
+    <div class="content-container">
+        <img src="GH0ST.jpg" alt="GH0ST">
+    </div>
+
+    <script>
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+            alert("Right-click is disabled on this page.");
+        });
+    </script>
+
+  </body>
+</html>
