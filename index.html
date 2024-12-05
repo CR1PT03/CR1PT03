@@ -14,14 +14,13 @@
             height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align from the top */
+            align-items: flex-start; 
             flex-direction: column;
         }
-
-        /* Navigation bar */
+      
         nav {
             background: #000;
-            height: 110px; /* Set a fixed height for the navbar */
+            height: 110px; 
             width: 100%;
             position: fixed;
             top: 0;
@@ -82,29 +81,27 @@
             font-size: 1rem;
         }
 
-        /* Center content below the navbar */
+        
 .content-container {
     display: flex;
-    flex-direction: column; /* Stack the content vertically (image first, prices below) */
+    flex-direction: column; 
     justify-content: center;
-    align-items: center; /* Center image and prices */
+    align-items: center; 
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     color: white;
     z-index: 0;
-    margin-top: 100px; /* Space below the navbar */
+    margin-top: 80px; 
 }
-
-/* Styling for the image */
+      
 .content-container img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px; /* Space between image and prices */
+    margin-bottom: 10px; 
 }
-
-/* Styling for each cryptocurrency price */
+      
 .crypto-price {
     font-size: 1.2em;
     margin: 20px 0;
@@ -113,7 +110,6 @@
     text-align: center;
 }
 
-/* Styling for the price value */
 .crypto-price span {
     font-weight: bold;
     color: #fff;
